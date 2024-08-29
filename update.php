@@ -1,34 +1,22 @@
-<?php
+<?php 
 
 include "conexao.php";
 
-$id = $_GET['ID'];
+$id = $_GET['id'];
 $nome = $_GET['nome'];
-$email = $_GET ['email'];
+$notas = $_GET['notas'];
 
-$update = "UPDATE viado SET nome = $nome, email = $email WHERE `ID` = $id";
+$update = "UPDATE aluno SET nome = '$nome', notas = '$notas' WHERE id = '$id'";
 
-$result = $conexao->query($update);
+$result = $conn->query($update);
 
 if($result === true){
+    echo "atualizada com sucesso!";
+}else{
 
-    echo "Atualizado";
+    echo "nao atulizada";
 }
-else{
-
-    echo "Erro";
-}
+    $conn->close ();
+    header("Location:read.php")
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="read.php">Voltar</a>
-</body>
-</html>

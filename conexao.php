@@ -1,18 +1,13 @@
 <?php 
 
-    $dbHost = "localhost:3307";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "japaalien";
+    $servidor = "localhost:3307";
+    $user = "root";
+    $pass = "";
+    $db = "crud2";
 
-    $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+    $conn = new mysqli($servidor, $user, $pass, $db);
 
-   if($conexao->connect_errno){
-        echo "Nao foi possivel conectar";
-   }
-   else{
-    echo "Deu certo";
-   }
-
-
+    //if($conn){
+      //  echo("conectado com sucesso!");
+    //}
 ?>

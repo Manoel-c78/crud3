@@ -1,37 +1,37 @@
-<?php
+<?php 
+
     include "conexao.php";
 
-    $id = $_GET['ID'] ?? '';
+    $id = $_GET['id'];
+   
+    $select = "SELECT nome, notas FROM aluno WHERE id= $id";
 
-    $select = "SELECT id, nome, email FROM `viado` WHERE `ID` = $id";
-
-    $resultado = $conexao->query($select);
-
-    $viado = $resultado->fetch_object();
-
+    $result = $conn->query($select);
+    
+    $aluno = $result->fetch_object();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATUALIZAR</title>
+    <title>Atualizar</title>
 </head>
 <body>
-    <a href="read.php">Voltar</a>    <br><br>
-    
     <form action="update.php" method="get">
 
-        <input type="text" value="<?= $viado->id ?>" hidden name="id">
-        <label for="">Nome do Aluno</label>
-        <input type="text" value="<?= $viado->nome ?>" name="nome">
+      <input type="number" value="<?= $id ?>" name="id" hidden>
+        <label for="">nome do aluno</label>
+        <input type="text" value="<?= $aluno->nome ?>" name="nome">
 
-        <label for="email">Email</label>
-        <input type="text" value="<?= $viado->email ?>" name="nota">
+        <label for="">notas</label>
+        <input type="number" value="<?= $aluno->notas ?>" name="notas" max="10" min="0" step="0.01">
 
-        <input type="submit" value="Atualizar">
-
+        <input type="submit" value="editar">        
     </form>
+
 </body>
 </html>

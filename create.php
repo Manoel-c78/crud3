@@ -1,19 +1,21 @@
 <?php 
+include "conexao.php";
 
-    include('config.php');
-    $nome = $_GET ['nome'];
-    $email = $_GET ['email'];
-    $senha = $_GET ['senha'];
+$nome = $_GET['nome'];
+$notas = $_GET['notas'];
 
-   $insert = "INSERT INTO 'viado' ('nome', 'email', 'senha') VALUES (NULL, '$nome', '$nota')";
+$insert = "INSERT INTO aluno (id, nome, notas) VALUES (NULL, '$nome', '$notas') ";
 
-   $resultado = $conexao->query($insert);
+$resultado = $conn->query($insert);
 
-   if($resultado == TRUE){
-    echo "cadastrado com sucesso !"
+if($resultado == TRUE){
+    echo "cadastrado com sucesso";
+}else{
+    echo "não cadastrado";
 }
-    else{
-        echo "Erro ao cadastrar !"
-   }
+
+
 
 ?>
+
+<a href="read.php">voltar</a>;

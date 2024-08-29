@@ -1,46 +1,42 @@
-<?php
-    
+<?php 
     include "conexao.php";
 
-    $select = "SELECT * FROM viado";
+    $select = "SELECT * FROM aluno";
 
-    $resultado = $conexao->query($select);
+    $result = $conn->query($select);
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar</title>
-</head>
-<body>
-<table>
-        <thead>
-            <th>Nome</th> 
-            <th>Email</th> 
-            <th>Senha</th>
-        </thead>
-        <tbody>
-            <?php 
-            while($viado = $resultado->fetch_object()){
+<a href="index.php">voltar</a>
+<br>
+<br>
+
+<table border="1">
+    <thead>
+        <th>id</th> <th>Nome</th> <th>Nota</th> <th>   </th> <th>   </th>
+    </thead>
+    <tbody>
+        <?php 
+            while($aluno = $result->fetch_object()){
                 echo "<tr>";
-                    echo "<td> $viado->ID </td>";
-                    echo "<td> $viado->nome </td>";
-                    echo "<td>$viado->email</td>";
-                    echo "<td>$viado->senha</td>";
-                    
-                echo "<td>";
+                    echo "<td>".$aluno->id."</td>";
+                    echo "<td>".$aluno->nome."</td>";
+                    echo "<td>".$aluno->notas."</td>";
 
-                    echo "<a href='delete.php?ID=$viado->ID'>Excluir<";
+                    echo "<td>";
+                        echo "<a href='delete.php?id=$aluno->id'>Excluir</a>";
+                    echo "</td>";
 
-                echo "/<tr>";
+                    echo "<td>";
+                        echo "<a href='editar.php?id=$aluno->id'>Editar</a>";
+                    echo "</td>";
+                echo "</tr>";    
 
             }
-            
-            
-            ?>
-        </tbody>
-    </table>
-</body>
-</html>
+        ?>
+
+    </tbody>
+
+
+
+</table>
